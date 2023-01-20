@@ -2,8 +2,12 @@ import pywhatkit
 
 
 def send_without_photo(n, message, names, numbers):
+
     for i in range(n):
-        msg = message.replace('<name>', names[i])
+        if '<name>' in message:
+            msg = message.replace('<name>', names[i])
+        else:
+            msg = message
 
         print(f'Sending message #{i + 1}')
 
@@ -16,11 +20,13 @@ def send_without_photo(n, message, names, numbers):
 
 
 def send_with_photo(n, message, names, numbers):
-
-    photo = input('Enter the photo path: ')
+    photo = input('Enter the photo path: ').replace('\\', '/').replace('"', '')
 
     for i in range(n):
-        msg = message.replace('<name>', names[i])
+        if '<name>' in message:
+            msg = message.replace('<name>', names[i])
+        else:
+            msg = message
 
         print(f'Sending message #{i + 1}')
 

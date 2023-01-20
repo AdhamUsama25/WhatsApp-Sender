@@ -1,5 +1,7 @@
-def get_names(n):
+import functions
 
+
+def get_names(n):
     names = []
     print("Enter the receivers names: ")
 
@@ -13,23 +15,25 @@ def get_numbers(n):
     numbers = []
 
     calling_code_flag = input(
-    """
-Does your numbers have the calling codes?
-Enter y if yes
-Enter n if no
-    """)
+        """
+    Does your numbers have the calling codes?
+    Enter y if yes
+    Enter n if no
+        """)
 
     if calling_code_flag == 'n':
         print("Enter the receivers phone numbers without the calling code. Example: 01...: ")
 
         for i in range(n):
-            numbers.append(f"+2{input()}")
+            number = functions.add_zero(input())
+            numbers.append(f"+2{number}")
 
     elif calling_code_flag == 'y':
         print("Enter the receivers phone numbers with the calling code. Example: +201...: ")
 
         for i in range(n):
-            numbers.append(f"{input()}")
+            number = functions.add_zero(input())
+            numbers.append(f"{number}")
     else:
         print("Please, enter a valid input")
         get_numbers(n)
@@ -41,6 +45,7 @@ def get_message():
     print("Enter the message and replace the name of the receiver with <name>.")
 
     msg = ""
+
     while True:
         line = input()
         if line != 'end msg':
@@ -48,17 +53,16 @@ def get_message():
         else:
             break
 
-    print('If the reciever name is Ahmed, the message will be:')
-    print(msg.replace('<name>', 'Ahmed'))
+    functions.display_msg(msg)
 
-    flag = input('''
+    continue_flag = input('''
 Do you wish to continue?
 Enter y if yes and n if no
     ''')
 
-    if flag == 'y':
+    if continue_flag == 'y':
         return msg
-    elif flag == 'n':
+    elif continue_flag == 'n':
         get_message()
     else:
         print("Wrong input.")
