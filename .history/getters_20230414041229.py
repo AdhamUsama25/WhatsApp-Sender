@@ -62,9 +62,9 @@ Enter y if yes and n if no
     ''')
 
     if continue_flag == 'y':
-        get_message()
-    elif continue_flag == 'n':
         return msg
+    elif continue_flag == 'n':
+        get_message()
     else:
         print("Wrong input.")
         get_message()
