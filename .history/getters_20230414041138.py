@@ -57,14 +57,14 @@ def get_message():
     functions.display_msg(msg)
 
     continue_flag = input('''
-Do you wish to continue the message?
+Do you wish to continue?
 Enter y if yes and n if no
     ''')
 
     if continue_flag == 'y':
-        get_message()
-    elif continue_flag == 'n':
         return msg
+    elif continue_flag == 'n':
+        get_message()
     else:
         print("Wrong input.")
         get_message()
